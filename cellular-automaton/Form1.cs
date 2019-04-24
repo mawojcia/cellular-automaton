@@ -12,40 +12,47 @@ namespace cellular_automaton
 {
     public partial class Form1 : Form
     {
-        //Rectangle rect = new Rectangle(10, 10, 200, 100);
+
         Bitmap bmp;
 
         public Form1()
         {
             InitializeComponent();
-            //int widith = Int32.Parse(textBoxWidith.Text);
-            //int height = Int32.Parse(textBoxHeight.Text);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
 
         }
 
         private void pictureBox2_paint(object sender, PaintEventArgs e)
         {
-            bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            int width = Int32.Parse(widthTextBox.Text);
+            int height = Int32.Parse(heightTextBox.Text);
+            int rule = Int32.Parse(ruleTextBox.Text);
+
+            bmp = new Bitmap(width, height);
             Graphics g = Graphics.FromImage(bmp);
-            float w = 4f;
-            //e.Graphics.FillRectangle(Brushes.Red, rect);
-            
+            float w = 1f;
 
-            Automat1D automat = new Automat1D(200, 200);
+            Automat1D automat = new Automat1D(width, height, rule);
 
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < 200; j++)
+                for (int j = 0; j < width; j++)
                 {
-                    //if (i % 2 == 0) g.FillRectangle(Brushes.Red, i * w, j * w, w, w);
-                   // else g.FillRectangle(Brushes.Green, i * w, j * w, w, w);
 
-                    if(automat.grid[i,j] == 1) g.FillRectangle(Brushes.Black, i * w, j * w, w, w);
+                    if (automat.grid[j, i] == 1) g.FillRectangle(Brushes.Black, i * w, j * w, w, w);
                     else g.FillRectangle(Brushes.White, i * w, j * w, w, w);
                 }
             }

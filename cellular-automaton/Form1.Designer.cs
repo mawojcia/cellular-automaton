@@ -29,64 +29,96 @@
         private void InitializeComponent()
         {
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.textBoxWidith = new System.Windows.Forms.TextBox();
+            this.widthTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxHeight = new System.Windows.Forms.TextBox();
+            this.heightTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ruleTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(-3, 114);
+            this.pictureBox2.Location = new System.Drawing.Point(25, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(950, 527);
+            this.pictureBox2.Size = new System.Drawing.Size(749, 629);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_paint);
             // 
-            // textBoxWidith
+            // widthTextBox
             // 
-            this.textBoxWidith.Location = new System.Drawing.Point(68, 61);
-            this.textBoxWidith.Name = "textBoxWidith";
-            this.textBoxWidith.Size = new System.Drawing.Size(117, 20);
-            this.textBoxWidith.TabIndex = 1;
+            this.widthTextBox.Location = new System.Drawing.Point(797, 125);
+            this.widthTextBox.Name = "widthTextBox";
+            this.widthTextBox.Size = new System.Drawing.Size(100, 20);
+            this.widthTextBox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 27);
+            this.label1.Location = new System.Drawing.Point(828, 95);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "widith";
+            this.label1.Text = "Width";
             // 
-            // textBoxHeight
+            // heightTextBox
             // 
-            this.textBoxHeight.Location = new System.Drawing.Point(246, 60);
-            this.textBoxHeight.Name = "textBoxHeight";
-            this.textBoxHeight.Size = new System.Drawing.Size(100, 20);
-            this.textBoxHeight.TabIndex = 3;
+            this.heightTextBox.Location = new System.Drawing.Point(797, 200);
+            this.heightTextBox.Name = "heightTextBox";
+            this.heightTextBox.Size = new System.Drawing.Size(100, 20);
+            this.heightTextBox.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(275, 27);
+            this.label2.Location = new System.Drawing.Point(828, 184);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "height";
+            this.label2.Text = "Height";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(811, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Draw";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(834, 277);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Rule";
+            // 
+            // ruleTextBox
+            // 
+            this.ruleTextBox.Location = new System.Drawing.Point(797, 293);
+            this.ruleTextBox.Name = "ruleTextBox";
+            this.ruleTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ruleTextBox.TabIndex = 7;
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(946, 653);
+            this.Controls.Add(this.ruleTextBox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxHeight);
+            this.Controls.Add(this.heightTextBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxWidith);
+            this.Controls.Add(this.widthTextBox);
             this.Controls.Add(this.pictureBox2);
             this.Name = "Form1";
-            this.Text = "dupa";
+            this.Text = "1D Automata";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -98,10 +130,13 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBoxWidith;
+        private System.Windows.Forms.TextBox widthTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxHeight;
+        private System.Windows.Forms.TextBox heightTextBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox ruleTextBox;
     }
 }
 

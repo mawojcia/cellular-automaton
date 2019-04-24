@@ -12,33 +12,58 @@ namespace cellular_automaton
         public int[] ruleTab = new int[3];
         public int[,] grid;
 
-        public Automat1D(int widith, int height)
+        public Automat1D(int widith, int height, int rule)
         {
-            //int[] vector = new int[widith];
-            //int[] vector2 = new int[widith];
 
-            grid = new int[widith,height];
+            grid = new int[widith, height];
 
-            for (int i = 0; i < widith; i++)
+            for (int i = 0; i < height; i++)
             {
-                for(int j = 0; j < height; j++)
+                for (int j = 0; j < widith; j++)
                 {
                     grid[i, j] = 0;
                 }
             }
 
-            grid[widith / 2, 0] = 1;
+            grid[0, widith / 2] = 1;
 
 
-            for(int i = 0; i < height - 1; i++)
+            for (int i = 0; i < height - 1; i++)
             {
-                for(int j = 0; j < widith - 3; j++)
+                for (int j = 0; j < widith; j++)
                 {
-                    ruleTab[0] = grid[i, j];
-                    ruleTab[1] = grid[i, j+1];
-                    ruleTab[2] = grid[i, j+2];
 
-                    grid[i + 1, j + 1] = rule90(ruleTab);
+                    if (j == 0)
+                    {
+                        ruleTab[0] = grid[i, widith - 1];
+                        ruleTab[1] = grid[i, j];
+                        ruleTab[2] = grid[i, j + 1];
+                    }
+
+                    else if (j == widith - 1)
+                    {
+                        ruleTab[0] = grid[i, j - 1];
+                        ruleTab[1] = grid[i, j];
+                        ruleTab[2] = grid[i, 0];
+                    }
+
+                    else
+                    {
+                        ruleTab[0] = grid[i, j - 1];
+                        ruleTab[1] = grid[i, j];
+                        ruleTab[2] = grid[i, j + 1];
+                    }
+
+                    if (rule <= 30) grid[i + 1, j] = rule30(ruleTab);
+
+                    if (rule > 30 && rule <= 60) grid[i + 1, j] = rule60(ruleTab);
+
+                    if (rule > 60 && rule <= 90) grid[i + 1, j] = rule90(ruleTab);
+
+                    if (rule > 90 && rule <= 120) grid[i + 1, j] = rule120(ruleTab);
+
+                    if (rule > 120) grid[i + 1, j] = rule225(ruleTab);
+
                 }
             }
         }
@@ -47,6 +72,54 @@ namespace cellular_automaton
         {
             if ((tab[0] == 1 && tab[1] == 1 && tab[2] == 0) || (tab[0] == 1 && tab[1] == 0 && tab[2] == 0) ||
                     (tab[0] == 0 && tab[1] == 1 && tab[2] == 1) || (tab[0] == 0 && tab[1] == 0 && tab[2] == 1))
+            {
+
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public int rule30(int[] tab)
+        {
+            if ((tab[0] == 1 && tab[1] == 0 && tab[2] == 0) || (tab[0] == 0 && tab[1] == 1 && tab[2] == 1) ||
+                    (tab[0] == 0 && tab[1] == 1 && tab[2] == 0) || (tab[0] == 0 && tab[1] == 0 && tab[2] == 1))
+            {
+
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public int rule60(int[] tab)
+        {
+            if ((tab[0] == 1 && tab[1] == 0 && tab[2] == 1) || (tab[0] == 1 && tab[1] == 0 && tab[2] == 0) ||
+                    (tab[0] == 0 && tab[1] == 1 && tab[2] == 1) || (tab[0] == 0 && tab[1] == 1 && tab[2] == 0))
+            {
+
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public int rule120(int[] tab)
+        {
+            if ((tab[0] == 1 && tab[1] == 1 && tab[2] == 0) || (tab[0] == 1 && tab[1] == 0 && tab[2] == 1) ||
+                    (tab[0] == 1 && tab[1] == 0 && tab[2] == 0) || (tab[0] == 0 && tab[1] == 1 && tab[2] == 1))
+            {
+
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public int rule225(int[] tab)
+        {
+            if ((tab[0] == 1 && tab[1] == 1 && tab[2] == 1) || (tab[0] == 1 && tab[1] == 1 && tab[2] == 0) ||
+                    (tab[0] == 1 && tab[1] == 0 && tab[2] == 1) || (tab[0] == 0 && tab[1] == 0 && tab[2] == 0))
             {
 
                 return 1;
