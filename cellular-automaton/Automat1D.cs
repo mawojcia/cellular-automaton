@@ -12,35 +12,35 @@ namespace cellular_automaton
         public int[] ruleTab = new int[3];
         public int[,] grid;
 
-        public Automat1D(int widith, int height, int rule)
+        public Automat1D(int width, int height, int rule)
         {
 
-            grid = new int[widith, height];
+            grid = new int[height, width];
 
             for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < widith; j++)
+                for (int j = 0; j < width; j++)
                 {
                     grid[i, j] = 0;
                 }
             }
 
-            grid[0, widith / 2] = 1;
+            grid[0, width / 2] = 1;
 
 
             for (int i = 0; i < height - 1; i++)
             {
-                for (int j = 0; j < widith; j++)
+                for (int j = 0; j < width; j++)
                 {
 
                     if (j == 0)
                     {
-                        ruleTab[0] = grid[i, widith - 1];
+                        ruleTab[0] = grid[i, width - 1];
                         ruleTab[1] = grid[i, j];
                         ruleTab[2] = grid[i, j + 1];
                     }
 
-                    else if (j == widith - 1)
+                    else if (j == width - 1)
                     {
                         ruleTab[0] = grid[i, j - 1];
                         ruleTab[1] = grid[i, j];

@@ -13,7 +13,7 @@ namespace cellular_automaton
     public partial class Form1 : Form
     {
 
-        Bitmap bmp;
+        //Bitmap bmp;
 
         public Form1()
         {
@@ -39,24 +39,43 @@ namespace cellular_automaton
         {
             int width = Int32.Parse(widthTextBox.Text);
             int height = Int32.Parse(heightTextBox.Text);
-            int rule = Int32.Parse(ruleTextBox.Text);
+            int rule = Int32.Parse(ruleTextBox.Text); 
 
-            bmp = new Bitmap(width, height);
+            Pen pen = new Pen(Color.Black);
+            Bitmap bmp = new Bitmap(601, 601);
             Graphics g = Graphics.FromImage(bmp);
-            float w = 1f;
 
-            Automat1D automat = new Automat1D(width, height, rule);
+            int scale = Math.Min(601 / width, 601 / height);
 
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
+
+
+            if (meshCheckBox.CheckState == CheckState.Checked){
+
+
+                for (int i = 0; i <= 601; i++)
                 {
-
-                    if (automat.grid[j, i] == 1) g.FillRectangle(Brushes.Black, i * w, j * w, w, w);
-                    else g.FillRectangle(Brushes.White, i * w, j * w, w, w);
+                    for (int j = 0; j <= 601; j++)
+                    {
+                        if (j % (scale) == 0) g.DrawLine(pen, j, 0, j, 601);
+                        if (i % (scale) == 0) g.DrawLine(pen, 0, i, 601, i);
+                    }
                 }
             }
+
+            Automat1D automat = new Automat1D( width, height, rule);
+
+            for (int i = 0; i < width; i++)
+            {
+                for(int j = 0; j< height; j++)
+                {
+                    if (automat.grid[j, i] == 1) g.FillRectangle(Brushes.Black, i * scale, j * scale, scale, scale);
+                            //else g.FillRectangle(Brushes.White, i * scale, j * scale, scale, scale);
+                }
+            }
+
+
             pictureBox2.Image = bmp;
+
         }
     }
 }
