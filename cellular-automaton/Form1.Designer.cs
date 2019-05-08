@@ -36,8 +36,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.ruleTextBox = new System.Windows.Forms.TextBox();
-            this.meshCheckBox = new System.Windows.Forms.CheckBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.chooseThatShitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dAutomataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameOfLifeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -49,7 +53,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_paint);
             // 
             // widthTextBox
             // 
@@ -85,7 +88,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(653, 328);
+            this.button1.Location = new System.Drawing.Point(658, 301);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -109,21 +112,44 @@
             this.ruleTextBox.Size = new System.Drawing.Size(100, 20);
             this.ruleTextBox.TabIndex = 7;
             // 
-            // meshCheckBox
+            // menuStrip1
             // 
-            this.meshCheckBox.AutoSize = true;
-            this.meshCheckBox.Location = new System.Drawing.Point(653, 291);
-            this.meshCheckBox.Name = "meshCheckBox";
-            this.meshCheckBox.Size = new System.Drawing.Size(81, 17);
-            this.meshCheckBox.TabIndex = 8;
-            this.meshCheckBox.Text = "Show mesh";
-            this.meshCheckBox.UseVisualStyleBackColor = true;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chooseThatShitToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(767, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // chooseThatShitToolStripMenuItem
+            // 
+            this.chooseThatShitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dAutomataToolStripMenuItem,
+            this.gameOfLifeToolStripMenuItem});
+            this.chooseThatShitToolStripMenuItem.Name = "chooseThatShitToolStripMenuItem";
+            this.chooseThatShitToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.chooseThatShitToolStripMenuItem.Text = "Choose that shit";
+            // 
+            // dAutomataToolStripMenuItem
+            // 
+            this.dAutomataToolStripMenuItem.Name = "dAutomataToolStripMenuItem";
+            this.dAutomataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dAutomataToolStripMenuItem.Text = "1D Automata";
+            // 
+            // gameOfLifeToolStripMenuItem
+            // 
+            this.gameOfLifeToolStripMenuItem.Name = "gameOfLifeToolStripMenuItem";
+            this.gameOfLifeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gameOfLifeToolStripMenuItem.Text = "Game of life";
+            this.gameOfLifeToolStripMenuItem.Click += new System.EventHandler(this.GameOfLifeToolStripMenuItem_Click);
             // 
             // Form1
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.PapayaWhip;
-            this.ClientSize = new System.Drawing.Size(793, 653);
-            this.Controls.Add(this.meshCheckBox);
+            this.ClientSize = new System.Drawing.Size(767, 653);
             this.Controls.Add(this.ruleTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
@@ -132,10 +158,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.widthTextBox);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "1D Automata";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,7 +183,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox ruleTextBox;
-        private System.Windows.Forms.CheckBox meshCheckBox;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem chooseThatShitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dAutomataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameOfLifeToolStripMenuItem;
     }
 }
 
