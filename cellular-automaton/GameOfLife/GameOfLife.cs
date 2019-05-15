@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace cellular_automaton
 {
@@ -19,30 +20,21 @@ namespace cellular_automaton
             this.columns = columns;
             this.rows = rows;
 
-            grid = new int[columns, rows];
-
-            for (int i = 0; i < columns; i++)
-            {
-                for (int j = 0; j < rows; j++)
-                {
-                    grid[i, j] = rand.Next(2);
-                }
-            }
-
+            grid = new int[columns, rows];          
         }
 
         public void nextGeneration()
         {
             int[,] next = new int[columns, rows];
 
-            for(int x = 1; x < columns - 1; x++)
+            for (int x = 1; x < columns - 1; x++)
             {
-                for(int y = 1; y < rows - 1; y++)
+                for (int y = 1; y < rows - 1; y++)
                 {
                     int neighbors = 0;
-                    for(int i = -1; i <=1; i++)
+                    for (int i = -1; i <= 1; i++)
                     {
-                        for(int j = -1; j <=1; j++)
+                        for (int j = -1; j <= 1; j++)
                         {
                             neighbors = neighbors + grid[x + i, y + j];
                         }
@@ -52,15 +44,15 @@ namespace cellular_automaton
                     if (grid[x, y] == 1 && neighbors < 2) next[x, y] = 0;
                     else if (grid[x, y] == 1 && neighbors > 3) next[x, y] = 0;
                     else if (grid[x, y] == 0 && neighbors == 3) next[x, y] = 1;
-                    else next[x, y] = grid[x, y];         
+                    else next[x, y] = grid[x, y];
                 }
-              
+
             }
             grid = next;
-            
+
 
             //return next;
-           
+
         }
 
         public void setValueFromClick()
