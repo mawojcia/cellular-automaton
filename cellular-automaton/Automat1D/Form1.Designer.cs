@@ -40,6 +40,7 @@
             this.chooseThatShitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dAutomataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameOfLifeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grainGrowthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -126,10 +127,11 @@
             // 
             this.chooseThatShitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dAutomataToolStripMenuItem,
-            this.gameOfLifeToolStripMenuItem});
+            this.gameOfLifeToolStripMenuItem,
+            this.grainGrowthToolStripMenuItem});
             this.chooseThatShitToolStripMenuItem.Name = "chooseThatShitToolStripMenuItem";
-            this.chooseThatShitToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
-            this.chooseThatShitToolStripMenuItem.Text = "Choose that shit";
+            this.chooseThatShitToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
+            this.chooseThatShitToolStripMenuItem.Text = "Choose program";
             // 
             // dAutomataToolStripMenuItem
             // 
@@ -143,6 +145,13 @@
             this.gameOfLifeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gameOfLifeToolStripMenuItem.Text = "Game of life";
             this.gameOfLifeToolStripMenuItem.Click += new System.EventHandler(this.GameOfLifeToolStripMenuItem_Click);
+            // 
+            // grainGrowthToolStripMenuItem
+            // 
+            this.grainGrowthToolStripMenuItem.Name = "grainGrowthToolStripMenuItem";
+            this.grainGrowthToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grainGrowthToolStripMenuItem.Text = "Grain growth";
+            this.grainGrowthToolStripMenuItem.Click += new System.EventHandler(this.GrainGrowthToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -187,6 +196,7 @@
         private System.Windows.Forms.ToolStripMenuItem chooseThatShitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dAutomataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameOfLifeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem grainGrowthToolStripMenuItem;
     }
 }
 

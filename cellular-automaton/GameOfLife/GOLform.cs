@@ -19,8 +19,7 @@ namespace cellular_automaton
 
         public static Bitmap bmp = new Bitmap(601, 601);
         Graphics g = Graphics.FromImage(bmp);
-        Pen pen = new Pen(Color.Black);
-        bool run = false;
+        Pen pen = new Pen(Color.Black);    
         private BackgroundWorker _worker = null;
 
 
@@ -43,9 +42,8 @@ namespace cellular_automaton
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            //int size = Int32.Parse(sizeTextBox.Text);
-            
-            run = true;
+            //int size = Int32.Parse(sizeTextBox.Text);          
+
             _worker = new BackgroundWorker();
             _worker.WorkerSupportsCancellation = true;
 
@@ -89,9 +87,6 @@ namespace cellular_automaton
         {
             x = e.X;
             y = e.Y;
-
-            label3.Text = x.ToString();
-            label4.Text = y.ToString();
 
             clickFillNode(x, y, size);
             
@@ -225,6 +220,14 @@ namespace cellular_automaton
         {
             size = Int32.Parse(sizeTextBox.Text);
             scale = (pictureBox1.Width + 1) / size;
+        }
+
+        private void GrainGrowthToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            GrainGrowthForm f1 = new GrainGrowthForm();
+            f1.ShowDialog();
+            this.Close();
         }
     }
 }

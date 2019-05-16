@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Automat1D.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Automat1D\Automat1D.cs" />
+    <Compile Include="Automat1D\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Automat1D\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GameOfLife\GameOfLife.cs" />
@@ -60,13 +60,23 @@
     <Compile Include="GameOfLife\GOLform.Designer.cs">
       <DependentUpon>GOLform.cs</DependentUpon>
     </Compile>
+    <Compile Include="GrainGrowth\GrainGrowth.cs" />
+    <Compile Include="GrainGrowth\GrainGrowthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GrainGrowth\GrainGrowthForm.Designer.cs">
+      <DependentUpon>GrainGrowthForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Automat1D\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameOfLife\GOLform.resx">
       <DependentUpon>GOLform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrainGrowth\GrainGrowthForm.resx">
+      <DependentUpon>GrainGrowthForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,5 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

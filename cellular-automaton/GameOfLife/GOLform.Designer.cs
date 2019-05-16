@@ -36,12 +36,11 @@
             this.sizeTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.emptyMeshButton = new System.Windows.Forms.Button();
+            this.grainGrowthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,10 +70,11 @@
             // 
             this.choseThathChitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dAutomatToolStripMenuItem,
-            this.gameOfLifeToolStripMenuItem});
+            this.gameOfLifeToolStripMenuItem,
+            this.grainGrowthToolStripMenuItem});
             this.choseThathChitToolStripMenuItem.Name = "choseThathChitToolStripMenuItem";
-            this.choseThathChitToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
-            this.choseThathChitToolStripMenuItem.Text = "Chose thath chit";
+            this.choseThathChitToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
+            this.choseThathChitToolStripMenuItem.Text = "Choose program";
             // 
             // dAutomatToolStripMenuItem
             // 
@@ -115,24 +115,6 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(674, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "label3";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(677, 115);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "label4";
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(628, 258);
@@ -172,6 +154,13 @@
             this.emptyMeshButton.UseVisualStyleBackColor = true;
             this.emptyMeshButton.Click += new System.EventHandler(this.EmptyMeshButton_Click);
             // 
+            // grainGrowthToolStripMenuItem
+            // 
+            this.grainGrowthToolStripMenuItem.Name = "grainGrowthToolStripMenuItem";
+            this.grainGrowthToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grainGrowthToolStripMenuItem.Text = "Grain growth";
+            this.grainGrowthToolStripMenuItem.Click += new System.EventHandler(this.GrainGrowthToolStripMenuItem_Click);
+            // 
             // GOLform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,8 +170,6 @@
             this.Controls.Add(this.emptyMeshButton);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.label1);
@@ -211,11 +198,10 @@
         private System.Windows.Forms.TextBox sizeTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button startButton;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button emptyMeshButton;
+        private System.Windows.Forms.ToolStripMenuItem grainGrowthToolStripMenuItem;
     }
 }

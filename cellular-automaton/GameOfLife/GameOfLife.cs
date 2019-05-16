@@ -15,8 +15,7 @@ namespace cellular_automaton
         public int[,] grid;
 
         public GameOfLife(int columns, int rows)
-        {
-            Random rand = new Random();
+        {           
             this.columns = columns;
             this.rows = rows;
 

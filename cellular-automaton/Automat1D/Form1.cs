@@ -55,5 +55,13 @@ namespace cellular_automaton
             golform.ShowDialog();
             this.Close();
         }
+
+        private void GrainGrowthToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            GrainGrowthForm f1 = new GrainGrowthForm();
+            f1.ShowDialog();
+            this.Close();
+        }
     }
 }

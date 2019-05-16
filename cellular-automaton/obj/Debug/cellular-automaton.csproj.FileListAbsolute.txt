@@ -9,3 +9,4 @@ E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.exe
 E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.pdb
 E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.csprojAssemblyReference.cache
 E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.GOLform.resources
+E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.GrainGrowthForm.resources
