@@ -10,3 +10,14 @@ E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.pdb
 E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.csprojAssemblyReference.cache
 E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.GOLform.resources
 E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.GrainGrowthForm.resources
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\bin\Debug\cellular-automaton.exe.config
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.exe
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.pdb
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\bin\Debug\cellular-automaton.exe
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\bin\Debug\cellular-automaton.pdb
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.csprojResolveAssemblyReference.cache
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.Form1.resources
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.GOLform.resources
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.GrainGrowthForm.resources
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.Properties.Resources.resources
+\\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.csproj.GenerateResource.Cache

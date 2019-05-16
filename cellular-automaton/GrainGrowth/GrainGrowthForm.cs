@@ -30,35 +30,37 @@ namespace cellular_automaton
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            //_worker = new BackgroundWorker();
-            //_worker.WorkerSupportsCancellation = true;
+            _worker = new BackgroundWorker();
+            _worker.WorkerSupportsCancellation = true;
 
-            //_worker.DoWork += new DoWorkEventHandler((state, args) =>
-            //{
-            //    do
-            //    {
-            //        if (_worker.CancellationPending)
-            //            break;
+            _worker.DoWork += new DoWorkEventHandler((state, args) =>
+            {
+                do
+                {
+                    if (_worker.CancellationPending)
+                        break;
 
-            //        //game.nextGeneration();
+                    //game.nextGeneration();
+                    grain.nextIteration();
 
-            //        for (int i = 0; i < size; i++)
-            //        {
-            //            for (int j = 0; j < size; j++)
-            //            {
-            //                if (game.grid[j, i] == 1) g.FillRectangle(Brushes.Black, i * scale, j * scale, scale, scale);
-            //                else if (game.grid[j, i] == 0) g.FillRectangle(Brushes.White, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
-            //            }
-            //        }
-            //        for (int slowdown = 0; slowdown < 30000000; slowdown++) ;
-            //        pictureBox1.Image = bmp;
+                    for (int i = 0; i < size; i++)
+                    {
+                        for (int j = 0; j < size; j++)
+                        {
+                            if (grain.grid[j, i] == 1) g.FillRectangle(Brushes.Green, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                            else if (grain.grid[j, i] == 2) g.FillRectangle(Brushes.Blue, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                            //else if (grain.grid[j, i] == 0) g.FillRectangle(Brushes.White, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                        }
+                    }
+                    for (int slowdown = 0; slowdown < 30000000; slowdown++) ;
+                    pictureBox1.Image = bmp;
 
-            //    } while (true);
-            //});
+                } while (true);
+            });
 
-            //_worker.RunWorkerAsync();
-            //startButton.Enabled = false;
-            //stopButton.Enabled = true;
+            _worker.RunWorkerAsync();
+            startButton.Enabled = false;
+            stopButton.Enabled = true;
         }
 
         private void RandomButton_Click(object sender, EventArgs e)
@@ -77,9 +79,10 @@ namespace cellular_automaton
             {
                 for (int j = 0; j < size; j++)
                 {
-                    Color color = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
-                    if (grain.grid[j, i] != 0) g.FillRectangle(new SolidBrush(color), (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
-                    else if (grain.grid[j, i] == 0) g.FillRectangle(Brushes.White, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                    
+                    if (grain.grid[j, i] == 1) g.FillRectangle(Brushes.Green, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                    else if (grain.grid[j, i] == 2) g.FillRectangle(Brushes.Blue, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                    else if(grain.grid[j, i] == 0) g.FillRectangle(Brushes.White, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
                 }
             }
 
@@ -98,12 +101,32 @@ namespace cellular_automaton
                 }
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 int x = rand.Next(size);
                 int y = rand.Next(size);
 
                 grain.grid[x, y] = i + 1;
+            }
+
+            for (int i = 0; i <= 601; i++)
+            {
+                for (int j = 0; j <= 601; j++)
+                {
+                    if (j % (scale) == 0) g.DrawLine(pen, j, 0, j, 601);
+                    if (i % (scale) == 0) g.DrawLine(pen, 0, i, 601, i);
+                }
+            }
+        }
+
+        public void clearMesh()
+        {
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    grain.grid[i, j] = 0;
+                }
             }
 
             for (int i = 0; i <= 601; i++)
@@ -125,6 +148,34 @@ namespace cellular_automaton
         private void setMeshSize(int width, int height)
         {
             grain = new GrainGrowth(width, height);
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            stopButton.Enabled = false;
+            startButton.Enabled = true;
+            _worker.CancelAsync();
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            setSizeScale();
+            setMeshSize(size, size);
+
+            clearMesh();
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+
+                    if (grain.grid[j, i] == 1) g.FillRectangle(Brushes.Green, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                    else if (grain.grid[j, i] == 2) g.FillRectangle(Brushes.Blue, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                    else if (grain.grid[j, i] == 0) g.FillRectangle(Brushes.White, (i * scale) + 1, (j * scale) + 1, scale - 1, scale - 1);
+                }
+            }
+
+            pictureBox1.Image = bmp;
         }
     }
 }

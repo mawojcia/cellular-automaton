@@ -81,6 +81,7 @@
             this.stopButton.TabIndex = 5;
             this.stopButton.Text = "STOP";
             this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // randomButton
             // 
@@ -100,6 +101,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "CLEAR";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // GrainGrowthForm
             // 
