@@ -68,6 +68,7 @@
     <Compile Include="GrainGrowth\GrainGrowthForm.Designer.cs">
       <DependentUpon>GrainGrowthForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GrainGrowth\GGNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Automat1D\Form1.resx">
