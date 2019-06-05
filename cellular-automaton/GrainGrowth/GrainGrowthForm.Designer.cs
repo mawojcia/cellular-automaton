@@ -43,6 +43,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.generateButton = new System.Windows.Forms.Button();
+            this.columnsTB = new System.Windows.Forms.TextBox();
+            this.rowsTB = new System.Windows.Forms.TextBox();
+            this.rowslbl = new System.Windows.Forms.Label();
+            this.columnslbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +58,8 @@
             this.pictureBox1.Size = new System.Drawing.Size(601, 601);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
             // sizeTextBox
             // 
@@ -124,6 +130,7 @@
             this.neighbourCB.Name = "neighbourCB";
             this.neighbourCB.Size = new System.Drawing.Size(110, 21);
             this.neighbourCB.TabIndex = 10;
+            this.neighbourCB.SelectedIndexChanged += new System.EventHandler(this.neighbourCB_SelectedIndexChanged);
             // 
             // boundaryCB
             // 
@@ -132,6 +139,7 @@
             this.boundaryCB.Name = "boundaryCB";
             this.boundaryCB.Size = new System.Drawing.Size(110, 21);
             this.boundaryCB.TabIndex = 11;
+            this.boundaryCB.SelectedIndexChanged += new System.EventHandler(this.boundaryCB_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -179,12 +187,48 @@
             this.generateButton.UseVisualStyleBackColor = true;
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
+            // columnsTB
+            // 
+            this.columnsTB.Location = new System.Drawing.Point(721, 411);
+            this.columnsTB.Name = "columnsTB";
+            this.columnsTB.Size = new System.Drawing.Size(64, 20);
+            this.columnsTB.TabIndex = 17;
+            // 
+            // rowsTB
+            // 
+            this.rowsTB.Location = new System.Drawing.Point(629, 411);
+            this.rowsTB.Name = "rowsTB";
+            this.rowsTB.Size = new System.Drawing.Size(64, 20);
+            this.rowsTB.TabIndex = 18;
+            // 
+            // rowslbl
+            // 
+            this.rowslbl.AutoSize = true;
+            this.rowslbl.Location = new System.Drawing.Point(646, 395);
+            this.rowslbl.Name = "rowslbl";
+            this.rowslbl.Size = new System.Drawing.Size(34, 13);
+            this.rowslbl.TabIndex = 19;
+            this.rowslbl.Text = "Rows";
+            // 
+            // columnslbl
+            // 
+            this.columnslbl.AutoSize = true;
+            this.columnslbl.Location = new System.Drawing.Point(738, 395);
+            this.columnslbl.Name = "columnslbl";
+            this.columnslbl.Size = new System.Drawing.Size(47, 13);
+            this.columnslbl.TabIndex = 20;
+            this.columnslbl.Text = "Columns";
+            // 
             // GrainGrowthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Plum;
             this.ClientSize = new System.Drawing.Size(797, 636);
+            this.Controls.Add(this.columnslbl);
+            this.Controls.Add(this.rowslbl);
+            this.Controls.Add(this.rowsTB);
+            this.Controls.Add(this.columnsTB);
             this.Controls.Add(this.generateButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -225,5 +269,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button generateButton;
+        private System.Windows.Forms.TextBox columnsTB;
+        private System.Windows.Forms.TextBox rowsTB;
+        private System.Windows.Forms.Label rowslbl;
+        private System.Windows.Forms.Label columnslbl;
     }
 }

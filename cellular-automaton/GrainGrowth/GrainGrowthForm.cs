@@ -33,6 +33,8 @@ namespace cellular_automaton
 
             neighbourCB.Items.Add("Von Neumann");
             neighbourCB.Items.Add("Moore");
+            neighbourCB.Items.Add("Pentagonal");
+            neighbourCB.Items.Add("Hexagonal");
 
             boundaryCB.Items.Add("Absorbing");
             boundaryCB.Items.Add("Periodic");
@@ -50,6 +52,15 @@ namespace cellular_automaton
             sizeTextBox.Visible = false;
             randAmoutLabel.Visible = false;
             label1.Visible = false;
+            columnslbl.Visible = false;
+            rowslbl.Visible = false;
+            columnsTB.Visible = false;
+            rowsTB.Visible = false;
+
+
+            neighbour = neighbourCB.Text;
+            boundary = boundaryCB.Text;
+            grainType = grainTypeCB.Text;
         }
 
         
@@ -70,7 +81,7 @@ namespace cellular_automaton
                         break;
 
                     //game.nextGeneration();
-                    grain.nextIteration("Von Neumann", "Absorbing", "Random");
+                    grain.nextIteration(neighbour, boundary, grainType);
 
                     for (int i = 0; i < size; i++)
                     {
@@ -81,7 +92,7 @@ namespace cellular_automaton
                             g.FillRectangle(brush, (i * scale) , (j * scale) , scale , scale );
                         }
                     }
-                    //for (int slowdown = 0; slowdown < 30000000; slowdown++) ;
+                    for (int slowdown = 0; slowdown < 30000000; slowdown++) ;
                     pictureBox1.Image = bmp;
 
                 } while (true);
@@ -97,15 +108,14 @@ namespace cellular_automaton
 
             setSizeScale();
             setMeshSize(size, size);
+            int red, green, blue;
+            Random rand = new Random();
+            Color nodeColor;
+            SolidBrush brush;
 
             if (grainTypeCB.Text == "Random")
             {
-                int red, green, blue, amount;
-                Random rand = new Random();
-                Color nodeColor;
-                SolidBrush brush;
-
-                amount = Int32.Parse(randAmoutTextBox.Text);
+                int amount = Int32.Parse(randAmoutTextBox.Text);
 
                 for (int i = 0; i < amount; i++)
                 {
@@ -138,21 +148,72 @@ namespace cellular_automaton
                         }
                     }
                 }
+            }
 
-                for (int i = 0; i < size; i++)
+            if (grainTypeCB.Text == "Homogenous")
+            {
+                double cols = Int32.Parse(columnsTB.Text);
+                double rows = Int32.Parse(rowsTB.Text);
+
+                int colsA = (int)Math.Floor(size / cols); 
+                int rowsA = (int)Math.Floor(size / rows); 
+                int inc = 1;
+                bool flag;
+
+                for(int i = 0; i < cols; i++)
                 {
-                    for (int j = 0; j < size; j++)
+                    int y = colsA * i;
+                    for (int j = 0; j < rows; j++)
                     {
-                        if (grain.grid[j, i].state != 0)
+                        
+                        int x = rowsA * j;
+
+                        grain.grid[x, y].state = inc;
+                        inc++;
+                        flag = true;
+                        
+
+                        while (true)
                         {
-                            nodeColor = Color.FromArgb(grain.grid[j, i].rgb[0], grain.grid[j, i].rgb[1], grain.grid[j, i].rgb[2]);
-                            brush = new SolidBrush(nodeColor);
-                            g.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                            red = rand.Next(256);
+                            green = rand.Next(256);
+                            blue = rand.Next(256);
+
+                            for (int k = 0; k < size; k++)
+                            {
+                                for (int z = 0; z < size; z++)
+                                {
+                                    if (grain.grid[z, k].rgb[0] == red && grain.grid[z, k].rgb[1] == green && grain.grid[z, k].rgb[2] == blue) { flag = false; }
+                                }
+                            }
+
+                            if (flag)
+                            {
+                                grain.grid[x, y].rgb[0] = red;
+                                grain.grid[x, y].rgb[1] = green;
+                                grain.grid[x, y].rgb[2] = blue;
+                                break;
+                            }
                         }
                     }
                 }
-                pictureBox1.Image = bmp;
+                
             }
+
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (grain.grid[j, i].state != 0)
+                    {
+                        nodeColor = Color.FromArgb(grain.grid[j, i].rgb[0], grain.grid[j, i].rgb[1], grain.grid[j, i].rgb[2]);
+                        brush = new SolidBrush(nodeColor);
+                        g.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+                }
+            }
+            pictureBox1.Image = bmp;
         }
 
         public void clearMesh()
@@ -184,6 +245,8 @@ namespace cellular_automaton
             _worker.CancelAsync();
         }
 
+        
+
         private void clearButton_Click(object sender, EventArgs e)
         {
             setSizeScale();
@@ -203,8 +266,19 @@ namespace cellular_automaton
             pictureBox1.Image = bmp;
         }
 
-        private void grainTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        private void boundaryCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            boundary = boundaryCB.Text;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void grainTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            grainType = grainTypeCB.Text;
             
             if (grainTypeCB.Text == "Random")
             {
@@ -212,9 +286,134 @@ namespace cellular_automaton
                 sizeTextBox.Visible = true;
                 randAmoutLabel.Visible = true;
                 label1.Visible = true;
+                columnslbl.Visible = false;
+                rowslbl.Visible = false;
+                columnsTB.Visible = false;
+                rowsTB.Visible = false;
+            }
+
+            if(grainTypeCB.Text == "Homogenous")
+            {
+                sizeTextBox.Visible = true;
+                columnslbl.Visible = true;
+                rowslbl.Visible = true;
+                columnsTB.Visible = true;
+                rowsTB.Visible = true;
+                label1.Visible = true;
+
+
+                randAmoutTextBox.Visible = false;
+                randAmoutLabel.Visible = false;
+            }
+
+            if(grainTypeCB.Text == "Click")
+            {
+                
+                label1.Visible = true;
+                sizeTextBox.Visible = true;
+
+                randAmoutLabel.Visible = false;            
+                randAmoutTextBox.Visible = false;
+                columnslbl.Visible = false;
+                rowslbl.Visible = false;
+                columnsTB.Visible = false;
+                rowsTB.Visible = false;
             }
         }
 
-        
+        private void neighbourCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            neighbour = neighbourCB.Text; 
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (grainTypeCB.Text == "Click")
+            {
+                int x = e.X;
+                int y = e.Y;
+
+                clickFillNode(x, y, size);
+            }
+        }
+
+        private void clickFillNode(int x, int y, int size)
+        {
+            double valueX = x / (600 / size);
+            double valueY = y / (600 / size);
+            bool flag = true;
+
+            int red, green, blue;
+            Random rand = new Random();
+            Color nodeColor;
+            SolidBrush brush;
+
+            int i = Convert.ToInt32(Math.Floor(valueX));
+            int j = Convert.ToInt32(Math.Floor(valueY));
+
+            if (grain.grid[j, i].state == 0)
+            {
+                grain.grid[j, i].state = findMax(grain.grid);
+
+                while (true)
+                {
+                    red = rand.Next(256);
+                    green = rand.Next(256);
+                    blue = rand.Next(256);
+
+                    for (int k = 0; k < size; k++)
+                    {
+                        for (int z = 0; z < size; z++)
+                        {
+                            if (grain.grid[z, k].rgb[0] == red && grain.grid[z, k].rgb[1] == green && grain.grid[z, k].rgb[2] == blue) { flag = false; }
+                        }
+                    }
+
+                    if (flag)
+                    {
+                        grain.grid[j, i].rgb[0] = red;
+                        grain.grid[j, i].rgb[1] = green;
+                        grain.grid[j, i].rgb[2] = blue;
+                        break;
+                    }
+                }
+
+                nodeColor = Color.FromArgb(grain.grid[j, i].rgb[0], grain.grid[j, i].rgb[1], grain.grid[j, i].rgb[2]);
+                brush = new SolidBrush(nodeColor);
+                g.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+            }
+            else
+            {
+                grain.grid[j, i].state = 0;
+                g.FillRectangle(Brushes.White, i * scale, j * scale, scale, scale);
+            }
+
+
+
+            pictureBox1.Image = bmp;
+        }
+
+        private int findMax(GGNode[,] grid)
+        {
+            int check = 1;
+            int max = 1;
+
+            for(int i = 0; i < size; i++)
+            {
+                for(int j = 0; j < size; j++)
+                {
+                    check = grid[j, i].state;
+                    if(check > max)
+                    {
+                        max = check;
+                    }
+                }
+            }
+            max++;
+
+            return max;
+        }
+
+
     }
 }
