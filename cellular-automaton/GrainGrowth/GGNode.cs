@@ -9,7 +9,7 @@ namespace cellular_automaton
     class GGNode
     {
         public int state;
-        public int dislocationDensity;
+        public double dislocationDensity;
         public bool recystalizationState;
         
         public int[] rgb = new int[3];

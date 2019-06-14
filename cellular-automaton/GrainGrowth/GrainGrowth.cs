@@ -872,7 +872,7 @@ namespace cellular_automaton
             GGNode[] nodes;
             int amount = 0;
             bool ifBorder = false;
-            int NumberOfStates = 0;
+            //int NumberOfStates = 0;
 
             for (int i = 0; i < height; i++)
             {
@@ -890,15 +890,15 @@ namespace cellular_automaton
             writeToFile.SaveToFile(DislocationDensity);
             RecrystalizationTimeStep = RecrystalizationTimeStep + DeltaT;
 
-            double avaragePackage = (DeltaDislocationDensity / (height * width)) * Percent;
+            double averagePackage = (DeltaDislocationDensity / (height * width)) * Percent;
 
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-                    next[i, j].dislocationDensity = next[i, j].dislocationDensity + 1;
-                    densityMap[i, j] += avaragePackage;
-                    DeltaDislocationDensity -= avaragePackage;
+                    next[i, j].dislocationDensity = next[i, j].dislocationDensity + averagePackage;
+                    densityMap[i, j] += averagePackage;
+                    DeltaDislocationDensity -= averagePackage;
                 }
             }
 
@@ -928,9 +928,9 @@ namespace cellular_automaton
 
             double randomPackage;
             int Randx, Randy;
-            double proability;
+            double probability;
 
-            while (DeltaDislocationDensity > 0)
+            while (DeltaDislocationDensity > 0) //rozrzucanie paczki
             {
                 Randx = rand.Next(0, height);
                 Randy = rand.Next(0, width);
@@ -940,11 +940,11 @@ namespace cellular_automaton
 
                 if (ifBorder)
                 {
-                    proability = rand.NextDouble();
+                    probability = rand.NextDouble();
                     randomPackage = DeltaDislocationDensity * rand.NextDouble();
-                    if (randomPackage <= DeltaDislocationDensity && proability > 0.2)
+                    if (randomPackage <= DeltaDislocationDensity && probability > 0.2)
                     {
-                        next[Randx, Randy].dislocationDensity = next[Randx, Randy].dislocationDensity + 1;
+                        next[Randx, Randy].dislocationDensity = next[Randx, Randy].dislocationDensity + randomPackage;
                         densityMap[Randx, Randy] += randomPackage;
                         DeltaDislocationDensity -= randomPackage;
                     }
@@ -955,11 +955,11 @@ namespace cellular_automaton
                 }
                 else
                 {
-                    proability = rand.NextDouble();
+                    probability = rand.NextDouble();
                     randomPackage = DeltaDislocationDensity * rand.NextDouble();
-                    if (randomPackage <= DeltaDislocationDensity && proability <= 0.2)
+                    if (randomPackage <= DeltaDislocationDensity && probability <= 0.2)
                     {
-                        next[Randx, Randy].dislocationDensity = next[Randx, Randy].dislocationDensity + 1;
+                        next[Randx, Randy].dislocationDensity = next[Randx, Randy].dislocationDensity + randomPackage;
                         densityMap[Randx, Randy] += randomPackage;
                         DeltaDislocationDensity -= randomPackage;
                     }
@@ -971,12 +971,13 @@ namespace cellular_automaton
 
             }
 
-            for (int i = 0; i < height; i++)
+            for (int i = 0; i < height; i++) //zarodkowanie
             {
                 for (int j = 0; j < width; j++)
                 {
                     nodes = getNeighbours(i, j, amount, boundary, neighbour);
-                    if (check(nodes, amount, i, j) && next[i, j].dislocationDensity > DislocationDensityCritical && next[i, i].recystalizationState == false)
+                    ifBorder = check(nodes, amount, i, j);
+                    if ( ifBorder && next[i, j].dislocationDensity > DislocationDensityCritical && next[i, j].recystalizationState == false)//przekroczona gestosc krytyczna, na granicy ziarna i nie zrekrystalizowane
                     {
                         NumberOfStates++;
                         next[i, j].state = NumberOfStates;
@@ -1011,8 +1012,8 @@ namespace cellular_automaton
             }
 
             
-
-            for (int i = 0; i < height; i++)
+            
+            for (int i = 0; i < height; i++) //sąsiedzi sie rekrystalizuja heh
             {
                 for (int j = 0; j < width; j++)
                 {
@@ -1025,15 +1026,16 @@ namespace cellular_automaton
                         {
                             if (checkIfDislocations(nodes,amount, i, j))
                             {
-                                grid[i, j].state = tmp;
-                                grid[i, j].dislocationDensity = 0;
+                                next[i, j].state = tmp;
+                                next[i, j].dislocationDensity = 0;
                                 densityMap[i, j] = 0;
-                                grid[i, j].recystalizationState = true;
+                                next[i, j].recystalizationState = true;
                             }
                         }
                     }
                 }
             }
+
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
@@ -1059,7 +1061,7 @@ namespace cellular_automaton
         {
             for (int i = 0; i < amount; i++)
             {
-                if (nodes[i].state != grid[x, y].state) return nodes[i].state;
+                if (nodes[i].recystalizationState == true ) return nodes[i].state;
             }
             return 0;
         }

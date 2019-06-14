@@ -55,6 +55,14 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.rekBtn = new System.Windows.Forms.Button();
             this.disloBtn = new System.Windows.Forms.Button();
+            this.AtextBox = new System.Windows.Forms.TextBox();
+            this.percentTextBox = new System.Windows.Forms.TextBox();
+            this.deltaTtextBox = new System.Windows.Forms.TextBox();
+            this.BtextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -189,7 +197,7 @@
             // 
             // generateButton
             // 
-            this.generateButton.Location = new System.Drawing.Point(671, 486);
+            this.generateButton.Location = new System.Drawing.Point(671, 499);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(75, 23);
             this.generateButton.TabIndex = 16;
@@ -299,13 +307,81 @@
             // 
             // disloBtn
             // 
-            this.disloBtn.Location = new System.Drawing.Point(698, 108);
+            this.disloBtn.Location = new System.Drawing.Point(661, 472);
             this.disloBtn.Name = "disloBtn";
-            this.disloBtn.Size = new System.Drawing.Size(75, 23);
+            this.disloBtn.Size = new System.Drawing.Size(100, 23);
             this.disloBtn.TabIndex = 28;
-            this.disloBtn.Text = "dislocations";
+            this.disloBtn.Text = "DISLOCATIONS";
             this.disloBtn.UseVisualStyleBackColor = true;
             this.disloBtn.Click += new System.EventHandler(this.disloBtn_Click);
+            // 
+            // AtextBox
+            // 
+            this.AtextBox.Location = new System.Drawing.Point(721, 23);
+            this.AtextBox.Name = "AtextBox";
+            this.AtextBox.Size = new System.Drawing.Size(67, 20);
+            this.AtextBox.TabIndex = 29;
+            this.AtextBox.Text = "86710969050178,5";
+            // 
+            // percentTextBox
+            // 
+            this.percentTextBox.Location = new System.Drawing.Point(721, 110);
+            this.percentTextBox.Name = "percentTextBox";
+            this.percentTextBox.Size = new System.Drawing.Size(67, 20);
+            this.percentTextBox.TabIndex = 30;
+            this.percentTextBox.Text = "0,2";
+            // 
+            // deltaTtextBox
+            // 
+            this.deltaTtextBox.Location = new System.Drawing.Point(721, 81);
+            this.deltaTtextBox.Name = "deltaTtextBox";
+            this.deltaTtextBox.Size = new System.Drawing.Size(65, 20);
+            this.deltaTtextBox.TabIndex = 31;
+            this.deltaTtextBox.Text = "0,001";
+            // 
+            // BtextBox
+            // 
+            this.BtextBox.Location = new System.Drawing.Point(721, 52);
+            this.BtextBox.Name = "BtextBox";
+            this.BtextBox.Size = new System.Drawing.Size(67, 20);
+            this.BtextBox.TabIndex = 32;
+            this.BtextBox.Text = "9,41268203527779";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(671, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Percent";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(676, 86);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 13);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "DeltaT";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(701, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(14, 13);
+            this.label7.TabIndex = 35;
+            this.label7.Text = "B";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(701, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(14, 13);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "A";
             // 
             // GrainGrowthForm
             // 
@@ -313,6 +389,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Plum;
             this.ClientSize = new System.Drawing.Size(797, 636);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.BtextBox);
+            this.Controls.Add(this.deltaTtextBox);
+            this.Controls.Add(this.percentTextBox);
+            this.Controls.Add(this.AtextBox);
             this.Controls.Add(this.disloBtn);
             this.Controls.Add(this.rekBtn);
             this.Controls.Add(this.pictureBox3);
@@ -379,5 +463,13 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button rekBtn;
         private System.Windows.Forms.Button disloBtn;
+        private System.Windows.Forms.TextBox AtextBox;
+        private System.Windows.Forms.TextBox percentTextBox;
+        private System.Windows.Forms.TextBox deltaTtextBox;
+        private System.Windows.Forms.TextBox BtextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -66,6 +66,12 @@ namespace cellular_automaton
             neighbour = neighbourCB.Text;
             boundary = boundaryCB.Text;
             grainType = grainTypeCB.Text;
+
+            //AtextBox.Text = "86710969050178.5";
+            //BtextBox.Text = "9.41268203527779";
+            //deltaTtextBox.Text = "0.001";
+            //percentTextBox.Text = "0.2";
+            
         }
 
         
@@ -78,6 +84,7 @@ namespace cellular_automaton
             _worker = new BackgroundWorker();
             _worker.WorkerSupportsCancellation = true;
 
+
             _worker.DoWork += new DoWorkEventHandler((state, args) =>
             {
                 do
@@ -85,7 +92,6 @@ namespace cellular_automaton
                     if (_worker.CancellationPending)
                         break;
 
-                    //game.nextGeneration();
                     grain.nextIteration(neighbour, boundary, grainType);
 
                     for (int i = 0; i < size; i++)
@@ -114,7 +120,13 @@ namespace cellular_automaton
             SolidBrush brush;
             int amount = Int32.Parse(randAmoutTextBox.Text);
             NumberOfStates = amount;
-            //grain.Recrystalization(0.001, 0.2, 86710969050178.5, 9.41268203527779, neighbour, boundary);
+
+            double A, B, deltaT, Percent;
+
+            A = Convert.ToDouble(AtextBox.Text);
+            B = double.Parse(BtextBox.Text);
+            deltaT = double.Parse(deltaTtextBox.Text);
+            Percent = double.Parse(percentTextBox.Text);
 
             int NumberOfStatesBeforeRecrystalization;
             for (int i = 0; i < 1; i++)
@@ -127,7 +139,7 @@ namespace cellular_automaton
                 {
                     NumberOfStatesBeforeRecrystalization = NumberOfStates;
                 }
-                grain.Recrystalization(0.001, 0.2, 86710969050178.5, 9.41268203527779, neighbour, boundary);
+                grain.Recrystalization(deltaT, Percent, A, B, neighbour, boundary);
                 NumberOfStates = grain.NumberOfStates;
                 
 
@@ -143,25 +155,7 @@ namespace cellular_automaton
                 }
             }
 
-            pictureBox1.Image = bmp;
-
-            //for (int i = 0; i < size; i++)
-            //{
-            //    for (int j = 0; j < size; j++)
-            //    {
-            //        if(grain.densityMap[j, i] == 0)
-            //        {
-            //            nodeColor = Color.FromArgb(0, 255, 0);
-            //            brush = new SolidBrush(nodeColor);
-            //            g3.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
-            //        }
-                    
-            //    }
-            //}
-
-            //pictureBox3.Image = bmp3;
-
-
+            pictureBox1.Image = bmp;     
         }
 
         private void monteBtn_Click(object sender, EventArgs e)
@@ -520,24 +514,16 @@ namespace cellular_automaton
 
                     if (grain.grid[i, j].recystalizationState == true)
                     {
-                        nodeColor = Color.FromArgb((int)/*(grain.grid[i, j].dislocationDensity / maxDislo * 255)*/ 255, 0, 0);
+                        nodeColor = Color.FromArgb(0, 255/*(int)(grain.grid[i, j].dislocationDensity / maxDislo * 255)*/, 0);
                         brush = new SolidBrush(nodeColor);
                     }
                     else
                     {
-                        brush = new SolidBrush(Color.Green);
+                        brush = new SolidBrush(Color.RosyBrown);
                     }
 
                     g3.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
-                    //if (Mesh_box.Checked == true)
-                    //{
-                    //    g1.DrawRectangle(pen, x, y, RecWidth, RecHeight);
-                    //}
-                    //x += RecWidth;
                 }
-
-                //x = 0;
-                //y += RecHeight;
 
                 pictureBox3.Image = bmp3;
             }
@@ -551,9 +537,9 @@ namespace cellular_automaton
             {
                 for (int j = 0; j < size; j++)
                 {
-                    if (grain.grid[i, j].dislocationDensity > max)
+                    if (grain.densityMap[i, j] > max)
                     {
-                        max = grain.grid[i, j].dislocationDensity;
+                        max = grain.densityMap[i, j];
                     }
                 }
             }
