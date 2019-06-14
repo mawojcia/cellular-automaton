@@ -20,9 +20,14 @@ namespace cellular_automaton
         GrainGrowth grain;
 
         public static Bitmap bmp = new Bitmap(601, 601);
+        public static Bitmap bmp2 = new Bitmap(601, 601);
+        public static Bitmap bmp3 = new Bitmap(601, 601);
         Graphics g = Graphics.FromImage(bmp);
+        Graphics g2 = Graphics.FromImage(bmp2);
+        Graphics g3 = Graphics.FromImage(bmp3);
         Pen pen = new Pen(Color.Black);
         private BackgroundWorker _worker = null;
+        int NumberOfStates = 0;
 
         public GrainGrowthForm()
         {
@@ -102,7 +107,150 @@ namespace cellular_automaton
             startButton.Enabled = false;
             stopButton.Enabled = true;
         }
-        
+
+        private void rekBtn_Click(object sender, EventArgs e)
+        {
+            Color nodeColor;
+            SolidBrush brush;
+            int amount = Int32.Parse(randAmoutTextBox.Text);
+            NumberOfStates = amount;
+            //grain.Recrystalization(0.001, 0.2, 86710969050178.5, 9.41268203527779, neighbour, boundary);
+
+            int NumberOfStatesBeforeRecrystalization;
+            for (int i = 0; i < 1; i++)
+            {
+                if (i == 0)
+                {
+                    NumberOfStatesBeforeRecrystalization = NumberOfStates + 1;
+                }
+                else
+                {
+                    NumberOfStatesBeforeRecrystalization = NumberOfStates;
+                }
+                grain.Recrystalization(0.001, 0.2, 86710969050178.5, 9.41268203527779, neighbour, boundary);
+                NumberOfStates = grain.NumberOfStates;
+                
+
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    nodeColor = Color.FromArgb(grain.grid[j, i].rgb[0], grain.grid[j, i].rgb[1], grain.grid[j, i].rgb[2]);
+                    brush = new SolidBrush(nodeColor);
+                    g.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                }
+            }
+
+            pictureBox1.Image = bmp;
+
+            //for (int i = 0; i < size; i++)
+            //{
+            //    for (int j = 0; j < size; j++)
+            //    {
+            //        if(grain.densityMap[j, i] == 0)
+            //        {
+            //            nodeColor = Color.FromArgb(0, 255, 0);
+            //            brush = new SolidBrush(nodeColor);
+            //            g3.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+            //        }
+                    
+            //    }
+            //}
+
+            //pictureBox3.Image = bmp3;
+
+
+        }
+
+        private void monteBtn_Click(object sender, EventArgs e)
+        {
+            Color nodeColor;
+            SolidBrush brush;
+
+            grain.monteCarlo(neighbour, boundary);
+
+             for (int i = 0; i < size; i++)
+             {
+                for (int j = 0; j < size; j++)
+                {
+                    nodeColor = Color.FromArgb(grain.grid[j, i].rgb[0], grain.grid[j, i].rgb[1], grain.grid[j, i].rgb[2]);
+                    brush = new SolidBrush(nodeColor);
+                    g.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                }
+             }
+
+            pictureBox1.Image = bmp;
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+               {
+
+                    if(grain.energyMap[j, i] == 0)
+                    {
+                        nodeColor = Color.FromArgb(255, 255, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+                    if (grain.energyMap[j, i] == 1)
+                    {
+                        nodeColor = Color.FromArgb(224, 237, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+                    if (grain.energyMap[j, i] == 2)
+                    {
+                        nodeColor = Color.FromArgb(191, 217, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+                    if (grain.energyMap[j, i] == 3)
+                    {
+                        nodeColor = Color.FromArgb(160, 198, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+                    if (grain.energyMap[j, i] == 4)
+                    {
+                        nodeColor = Color.FromArgb(127, 178, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+                    if (grain.energyMap[j, i] == 5)
+                    {
+                        nodeColor = Color.FromArgb(91, 156, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+                    if (grain.energyMap[j, i] == 6)
+                    {
+                        nodeColor = Color.FromArgb(58, 136, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+                    if (grain.energyMap[j, i] == 7)
+                    {
+                        nodeColor = Color.FromArgb(0, 100, 255);
+                        brush = new SolidBrush(nodeColor);
+                        g2.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    }
+
+
+                }
+            }
+
+            pictureBox2.Image = bmp2;
+        }
+
         private void generateButton_Click(object sender, EventArgs e)
         {
 
@@ -235,7 +383,8 @@ namespace cellular_automaton
 
         private void setMeshSize(int width, int height)
         {
-            grain = new GrainGrowth(width, height);
+            int amount = Int32.Parse(randAmoutTextBox.Text);
+            grain = new GrainGrowth(width, height, amount);
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -335,6 +484,80 @@ namespace cellular_automaton
 
                 clickFillNode(x, y, size);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pictureBox2.Visible = false;
+            pictureBox3.Visible = false;
+            pictureBox1.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = false;
+            pictureBox3.Visible = false;
+            pictureBox2.Visible = true;
+        }
+
+        private void drxBtn_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = false;
+            pictureBox2.Visible = false;
+            pictureBox3.Visible = true;
+        }
+
+        private void disloBtn_Click(object sender, EventArgs e)
+        {
+            double maxDislo = getMaxDislocation();
+            Color nodeColor;
+            SolidBrush brush;
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+
+                    if (grain.grid[i, j].recystalizationState == true)
+                    {
+                        nodeColor = Color.FromArgb((int)/*(grain.grid[i, j].dislocationDensity / maxDislo * 255)*/ 255, 0, 0);
+                        brush = new SolidBrush(nodeColor);
+                    }
+                    else
+                    {
+                        brush = new SolidBrush(Color.Green);
+                    }
+
+                    g3.FillRectangle(brush, (i * scale), (j * scale), scale, scale);
+                    //if (Mesh_box.Checked == true)
+                    //{
+                    //    g1.DrawRectangle(pen, x, y, RecWidth, RecHeight);
+                    //}
+                    //x += RecWidth;
+                }
+
+                //x = 0;
+                //y += RecHeight;
+
+                pictureBox3.Image = bmp3;
+            }
+        }
+
+        double getMaxDislocation()
+        {
+            double max = 0;
+
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (grain.grid[i, j].dislocationDensity > max)
+                    {
+                        max = grain.grid[i, j].dislocationDensity;
+                    }
+                }
+            }
+            return max;
         }
 
         private void clickFillNode(int x, int y, int size)

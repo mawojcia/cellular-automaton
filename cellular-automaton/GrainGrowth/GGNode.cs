@@ -9,6 +9,8 @@ namespace cellular_automaton
     class GGNode
     {
         public int state;
+        public int dislocationDensity;
+        public bool recystalizationState;
         
         public int[] rgb = new int[3];
 
@@ -19,6 +21,9 @@ namespace cellular_automaton
             rgb[0] = 255;
             rgb[1] = 255;
             rgb[2] = 255;
+
+            dislocationDensity = 0;
+            recystalizationState = false;
         }
 
         public void setState(int s)

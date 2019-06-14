@@ -21,3 +21,4 @@ E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.GrainG
 \\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.Properties.Resources.resources
 \\KRYWAN\RedirectedUserFolders\mawojci6\Pulpit\cellular automata\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.csproj.GenerateResource.Cache
 E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular-automaton.csprojResolveAssemblyReference.cache
+E:\git\cellular-automaton\cellular-automaton\obj\Debug\cellular_automaton.EnergyMap.resources

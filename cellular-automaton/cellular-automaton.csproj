@@ -61,6 +61,12 @@
     <Compile Include="GameOfLife\GOLform.Designer.cs">
       <DependentUpon>GOLform.cs</DependentUpon>
     </Compile>
+    <Compile Include="GrainGrowth\EnergyMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GrainGrowth\EnergyMap.Designer.cs">
+      <DependentUpon>EnergyMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="GrainGrowth\GrainGrowth.cs" />
     <Compile Include="GrainGrowth\GrainGrowthForm.cs">
       <SubType>Form</SubType>
@@ -69,6 +75,7 @@
       <DependentUpon>GrainGrowthForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GrainGrowth\GGNode.cs" />
+    <Compile Include="GrainGrowth\WriteToFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Automat1D\Form1.resx">
@@ -76,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameOfLife\GOLform.resx">
       <DependentUpon>GOLform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrainGrowth\EnergyMap.resx">
+      <DependentUpon>EnergyMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrainGrowth\GrainGrowthForm.resx">
       <DependentUpon>GrainGrowthForm.cs</DependentUpon>
